@@ -198,29 +198,13 @@ A lista a seguir apresenta alguns recursos práticos úteis para ajudá-lo a com
 
 ---
 
-## Código QR para este repositório
-Use o seguinte código QR para vincular este repositório.
-
-![](img/github-repo-qrcode.png)
-
-[https://bit.ly/3KkhzYW](https://bit.ly/3KkhzYW)
-
-## Código QR para o workshop
-Use o seguinte código QR para vincular o [workshop](https://catalog.workshops.aws/mlops-from-idea-to-production/en-US) público da AWS.
-
-![](img/workshop-qrcode.png)
-
-[https://bit.ly/3zjk07S](https://bit.ly/3zjk07S)
-
----
-
 Copyright Amazon.com, Inc. ou suas afiliadas. Todos os direitos reservados.
 SPDX-License-Identifier: MIT-0
 
 
 
 
-
+<!-- 
 políticas que adicionei: AllowSageMakerUpdateDomain, 
-AllowSageMakerGetMlflow -> permite as ações necessárias do MLflow no SageMaker.
+AllowSageMakerGetMlflow -> permite as ações necessárias do MLflow no SageMaker. -->
 
