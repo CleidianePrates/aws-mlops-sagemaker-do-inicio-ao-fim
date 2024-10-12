@@ -216,3 +216,11 @@ Use o seguinte código QR para vincular o [workshop](https://catalog.workshops.a
 
 Copyright Amazon.com, Inc. ou suas afiliadas. Todos os direitos reservados.
 SPDX-License-Identifier: MIT-0
+
+
+
+
+
+políticas que adicionei: AllowSageMakerUpdateDomain, 
+AllowSageMakerGetMlflow -> permite as ações necessárias do MLflow no SageMaker.
+
