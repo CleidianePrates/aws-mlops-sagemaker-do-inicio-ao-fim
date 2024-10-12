@@ -117,13 +117,13 @@ Você usa um espaço JupyterLab como nossa IDE para este workshop.
 ### Iniciar o workshop
 Se você estiver participando de um workshop liderado pela AWS ou usou o modelo CloudFormation fornecido, o conteúdo do workshop é clonado automaticamente no volume EBS do espaço, nenhuma ação é necessária da sua parte. Se você usar seu próprio domínio e perfil de usuário ou criou um domínio via interface do usuário do Console AWS, siga as instruções na próxima seção **Baixar notebooks para seu espaço JupyterLab** para clonar o conteúdo.
 
-O repositório público do GitHub [Amazon SageMaker MLOps: da ideia à produção em seis etapas](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production) contém todo o código-fonte.
+O repositório público do GitHub [Amazon SageMaker MLOps: da ideia à produção em seis etapas](https://github.com/CleidianePrates/amazon-sagemaker-from-idea-to-production.git) contém todo o código-fonte.
 
 #### Baixar notebooks para seu espaço JupyterLab
 Você só precisa clonar os notebooks em seu espaço se usar seu próprio domínio e perfil de usuário. Para fazer isso, selecione `Terminal` na janela do Launcher do JupyterLab ou selecione **File** > **New** > **Terminal** para abrir um terminal e execute o `git clone`:
 
 ```sh
-git clone https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production.git
+git clone https://github.com/CleidianePrates/amazon-sagemaker-from-idea-to-production.git
 ```
 
 Isso clonará o repositório no sistema de arquivos local do JupyterLab.
