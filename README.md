@@ -133,7 +133,7 @@ Como etapa preparatória final, certifique-se de executar o notebook `00-inicie-
 
 Nota: recomendamos que você leia e depois execute cada célula usando o comando `Shift + Enter`.
 
-Após executar o notebook `00-start-here.ipynb`, você pode passar para o primeiro notebook [`01-idea-development`](01-idea-development.ipynb).
+Após executar o notebook `00-inicie-aqui.ipynb`, você pode passar para o primeiro notebook [`01-idea-development`](01-idea-development.ipynb).
 
 ## Como usar este treinamento
 Você pode fazer este treinamento de duas maneiras:
