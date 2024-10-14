@@ -1,5 +1,5 @@
 # Amazon SageMaker MLOps: da ideia à produção em seis etapas
-teste
+
 ![](./img/MLOps-with-SageMaker-small.png)
 
 Este repositório contém uma sequência de notebooks simples demonstrando como passar de uma ideia de ML para a produção usando o [Amazon SageMaker](https://aws.amazon.com/sagemaker).
@@ -111,28 +111,28 @@ Você usa um espaço JupyterLab como nossa IDE para este treinamento.
 ### Iniciar o treinamento
 e você usar seu próprio domínio e perfil de usuário ou criou um domínio via interface do usuário do Console AWS, siga as instruções na próxima seção **Baixar notebooks para seu espaço JupyterLab** para clonar o conteúdo.
 
-O repositório público do GitHub [Amazon SageMaker MLOps: da ideia à produção em seis etapas](https://github.com/CleidianePrates/amazon-sagemaker-from-idea-to-production.git) contém todo o código-fonte.
+O repositório público do GitHub [Amazon SageMaker MLOps: da ideia à produção em seis etapas](https://github.com/CleidianePrates/aws-mlops-sagemaker-do-inicio-ao-fim.git) contém todo o código-fonte.
 
 #### Baixar notebooks para seu espaço JupyterLab
 Você só precisa clonar os notebooks em seu espaço se usar seu próprio domínio e perfil de usuário. Para fazer isso, selecione `Terminal` na janela do Launcher do JupyterLab ou selecione **File** > **New** > **Terminal** para abrir um terminal e execute o `git clone`:
 
 ```sh
-git clone https://github.com/CleidianePrates/amazon-sagemaker-from-idea-to-production.git
+git clone https://github.com/CleidianePrates/aws-mlops-sagemaker-do-inicio-ao-fim.git
 ```
 
 Isso clonará o repositório no sistema de arquivos local do JupyterLab.
 
 #### Abrir e executar um notebook de configuração
-Como etapa preparatória final, certifique-se de executar o notebook `00-start-here.ipynb`. Para fazer isso:
+Como etapa preparatória final, certifique-se de executar o notebook `00-inicie-aqui.ipynb`. Para fazer isso:
 
 1. No navegador de arquivos, abra a pasta `amazon-sagemaker-from-idea-to-production` clicando duas vezes nela
-2. Abra o notebook `00-start-here.ipynb` e siga as instruções no notebook
+2. Abra o notebook `00-inicie-aqui.ipynb` e siga as instruções no notebook
 
 ![](img/studio-open-notebook.png)
 
 Nota: recomendamos que você leia e depois execute cada célula usando o comando `Shift + Enter`.
 
-Após executar o notebook `00-start-here.ipynb`, você pode passar para o primeiro notebook [`01-idea-development`](01-idea-development.ipynb).
+Após executar o notebook `00-inicie-aqui.ipynb`, você pode passar para o primeiro notebook [`01-idea-development`](01-idea-development.ipynb).
 
 ## Como usar este treinamento
 Você pode fazer este treinamento de duas maneiras:
