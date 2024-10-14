@@ -14,7 +14,7 @@ Cada notebook também fornece links para recursos práticos úteis e propõe ide
 
 Você segue os seis notebooks e desenvolve sua ideia de ML de um notebook experimental para uma solução pronta para produção seguindo as práticas recomendadas de MLOps:
 
-![](img/six-steps.png)
+![](img/seis-etapas.png)
 
 ## Tópicos adicionais
 Há também exemplos práticos adicionais de outros recursos do SageMaker e tópicos de ML, como [testes A/B](https://docs.aws.amazon.com/sagemaker/latest/dg/model-validation.html), containers personalizados de [processamento](https://docs.aws.amazon.com/sagemaker/latest/dg/build-your-own-processing-container.html), [treinamento](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html) e [inferência](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-main.html), [depuração e perfilamento](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html), [segurança](https://docs.aws.amazon.com/sagemaker/latest/dg/security.html), endpoints [multi-modelo](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html) e [multi-container](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html), e [pipelines de inferência em série](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html). Explore os notebooks na pasta `additional-topics` para testar esses recursos.
