@@ -25,25 +25,20 @@ Para a versão completa das instruções e configuração detalhada da conta, co
 ### Pré-requisitos
 Você precisa de uma **conta AWS**. Se você ainda não tem uma conta, siga o guia de primeiros passos [Configurando seu Ambiente AWS](https://aws.amazon.com/getting-started/guides/setup-environment/) para uma visão geral rápida.
 
-### Workshop conduzido por instrutor da AWS
-Se você está participando de um AWS Immersion Day ou um evento similar conduzido por instrutor e gostaria de usar uma conta AWS fornecida, siga estas [instruções](https://catalog.workshops.aws/mlops-from-idea-to-production/en-US/00-introduction/20-getting-started-workshop-studio) sobre como reivindicar sua conta AWS temporária e como iniciar o SageMaker Studio.
-
-❗ Pule as etapas seguintes **Configurar domínio Amazon SageMaker** e **Implantar modelo CloudFormation** se você estiver usando uma conta provisionada pela AWS.
-
 ### Configurar domínio Amazon SageMaker
 Para executar os notebooks, você deve usar o [SageMaker Studio](https://aws.amazon.com/sagemaker/studio/), que requer um [domínio SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-entity-status.html).
 
 #### Domínio SageMaker existente
-Se você já tem um domínio SageMaker e gostaria de usá-lo para executar o workshop, siga o [guia de configuração do SageMaker Studio](https://aws.amazon.com/getting-started/hands-on/machine-learning-tutorial-set-up-sagemaker-studio-account-permissions/) para anexar as políticas IAM AWS necessárias à função de execução IAM usada pelo seu perfil de usuário do Studio. Para este workshop, você deve anexar as seguintes políticas IAM gerenciadas à função de execução IAM do perfil de usuário que você usa para executar o workshop:
+Se você já tem um domínio SageMaker e gostaria de usá-lo para executar o treinamento, siga o [guia de configuração do SageMaker Studio](https://aws.amazon.com/getting-started/hands-on/machine-learning-tutorial-set-up-sagemaker-studio-account-permissions/) para anexar as políticas IAM AWS necessárias à função de execução IAM usada pelo seu perfil de usuário do Studio. Para este treinamento, você deve anexar as seguintes políticas IAM gerenciadas à função de execução IAM do perfil de usuário que você usa para executar o treinamento:
 - `AmazonSageMakerFullAccess`
 - `AWSCloudFormationFullAccess`
 - `AWSCodePipeline_FullAccess`
 - `AmazonSageMakerPipelinesIntegrations`
 
-Você também pode [criar um novo perfil de usuário](https://docs.aws.amazon.com/sagemaker/latest/dg/domain-user-profile-add-remove.html) com uma função de execução IAM dedicada para usar neste workshop.
+Você também pode [criar um novo perfil de usuário](https://docs.aws.amazon.com/sagemaker/latest/dg/domain-user-profile-add-remove.html) com uma função de execução IAM dedicada para usar neste treinamento.
 
 #### Provisionar um novo domínio SageMaker
-Se você não tem um domínio SageMaker ou gostaria de usar um domínio dedicado para o workshop, você deve criar um novo domínio.
+Se você não tem um domínio SageMaker ou gostaria de usar um domínio dedicado para o treinamento, você deve criar um novo domínio.
 
 ❗ Se você tiver mais de um domínio em sua conta, considere o limite de domínios ativos em uma Região em uma conta.
 
@@ -85,7 +80,7 @@ No painel **CloudFormation**, escolha **Stacks**. Leva cerca de 15 minutos para 
 ### Iniciar SageMaker Studio
 Após fazer login na conta AWS, siga as instruções [Iniciar Amazon SageMaker Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-launch.html) para abrir o Studio.
 
-Aqui estão as instruções se você estiver em um evento de workshop liderado pela AWS:
+Aqui estão as instruções passo a passo, se preferir:
 
 1. Primeiro, navegue até o console do Amazon SageMaker, você pode fazer isso simplesmente começando a digitar `SageMaker` na caixa de pesquisa no topo.
 
@@ -100,13 +95,13 @@ Aqui estão as instruções se você estiver em um evento de workshop liderado p
 5. Aceite ou recuse as preferências de cookies com base em sua preferência
 
 ### Abrir espaço JupyterLab
-Você usa um espaço JupyterLab como nossa IDE para este workshop.
+Você usa um espaço JupyterLab como nossa IDE para este treinamento.
 
 1. Para iniciar um espaço JupyterLab, selecione o aplicativo `JupyterLab` no canto superior esquerdo
 
    ![Seletor JupyterLab](img/jupyterlab-app.png)
    
-2. Cada aplicativo no SageMaker Studio recebe seu próprio espaço. Os espaços são usados para gerenciar as necessidades de armazenamento e recursos de cada aplicativo. Se você estiver participando de um workshop liderado pela AWS ou usou o modelo CloudFormation fornecido, o espaço necessário já está criado para você, caso contrário, você deve criar um novo espaço JupyterLab conforme descrito no [Guia do Desenvolvedor](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-jl-user-guide.html) ou reutilizar um existente
+2. Cada aplicativo no SageMaker Studio recebe seu próprio espaço. Os espaços são usados para gerenciar as necessidades de armazenamento e recursos de cada aplicativo. 
 
 3. Execute o espaço selecionando o botão de execução à direita. Este processo pode levar alguns segundos.
 
@@ -114,8 +109,8 @@ Você usa um espaço JupyterLab como nossa IDE para este workshop.
 
 4. Assim que o espaço estiver em execução, selecione `Open` para navegar até o aplicativo JupyterLab.
 
-### Iniciar o workshop
-Se você estiver participando de um workshop liderado pela AWS ou usou o modelo CloudFormation fornecido, o conteúdo do workshop é clonado automaticamente no volume EBS do espaço, nenhuma ação é necessária da sua parte. Se você usar seu próprio domínio e perfil de usuário ou criou um domínio via interface do usuário do Console AWS, siga as instruções na próxima seção **Baixar notebooks para seu espaço JupyterLab** para clonar o conteúdo.
+### Iniciar o treinamento
+e você usar seu próprio domínio e perfil de usuário ou criou um domínio via interface do usuário do Console AWS, siga as instruções na próxima seção **Baixar notebooks para seu espaço JupyterLab** para clonar o conteúdo.
 
 O repositório público do GitHub [Amazon SageMaker MLOps: da ideia à produção em seis etapas](https://github.com/CleidianePrates/amazon-sagemaker-from-idea-to-production.git) contém todo o código-fonte.
 
@@ -140,12 +135,12 @@ Nota: recomendamos que você leia e depois execute cada célula usando o comando
 
 Após executar o notebook `00-start-here.ipynb`, você pode passar para o primeiro notebook [`01-idea-development`](01-idea-development.ipynb).
 
-## Como usar este workshop
-Você pode fazer este workshop de duas maneiras:
+## Como usar este treinamento
+Você pode fazer este treinamento de duas maneiras:
 - Percorra os notebooks fornecidos, execute as células de código sequencialmente e siga as instruções e o fluxo de execução
-- Escreva seu próprio código com tarefas práticas e exercícios
+- Escreva seu próprio código usando esse treinamento como base.
 
-O diagrama a seguir mostra os possíveis fluxos do workshop:
+O diagrama a seguir mostra os possíveis fluxos do treinamento:
 
 ![](design/workshop-flow.drawio.svg)
 
@@ -153,24 +148,13 @@ O diagrama a seguir mostra os possíveis fluxos do workshop:
 Use este modo se você não estiver familiarizado com programação Python e for novo em notebooks Jupyter. Você segue cada notebook `00-...`, `01-...`, ..., `06-...` e executa todas as células de código com `Shift` + `Enter`. As instruções fornecidas explicam o que o código está fazendo e por quê. Você precisa de cerca de duas horas e meia para executar todas as células de código em todos os notebooks.
 Todos os notebooks e todas as células de código são idempotentes. Certifique-se de executar todas as células de código sequencialmente, de cima para baixo.
 
-### Modo de tarefa
-Use este modo se você tem experiência trabalhando com notebooks Jupyter e gostaria de escrever seu próprio código para ter uma compreensão prática mais profunda dos recursos do SageMaker e do SDK Python do SageMaker.
-Cada notebook de instrução fundamental `00-...`, `01-...`, ..., `06-...` na pasta raiz do workshop tem um notebook de "tarefa" correspondente com exercícios na pasta `assignments`. Primeiro, percorra as instruções no notebook da pasta raiz e depois complete os exercícios no notebook de tarefa correspondente. Os notebooks são mapeados da seguinte forma:
-- `00-start-here` > `./assignments/00-assignment-setup`
-- `01-idea-development` > `./assignments/01-assignment-local-development`
-- `02-sagemaker-containers` > `./assignments/02-assignment-sagemaker-containers`
-- `03-sagemaker-pipeline` > `./assignments/03-assignment-sagemaker-pipeline`
-- `04-sagemaker-projects` > `./assignments/04-assignment-sagemaker-project`
-- `05-deploy` > `./assignments/05-assignment-deploy`
-- `06-monitoring` > `./assignments/06-assignment-monitoring`
 
 ## Limpeza
-❗ Você não precisa realizar uma limpeza se estiver executando um workshop conduzido por um instrutor da AWS.
 
 Para evitar cobranças, você deve remover todos os recursos provisionados e gerados pelo projeto de sua conta AWS.
 
 Primeiro, execute todas as etapas no [notebook de limpeza](99-clean-up.ipynb) fornecido.
-Segundo, se você usou o Console AWS para provisionar um domínio para este workshop e não precisa do domínio, você pode excluir o domínio seguindo [estas instruções](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-delete-domain.html).
+Segundo, se você usou o Console AWS para provisionar um domínio para este treinamento e não precisa do domínio, você pode excluir o domínio seguindo [estas instruções](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-delete-domain.html).
 
 Se você provisionou um domínio usando um modelo CloudFormation, você pode excluir a pilha CloudFormation no console AWS.
 
@@ -198,13 +182,8 @@ A lista a seguir apresenta alguns recursos práticos úteis para ajudá-lo a com
 
 ---
 
-Copyright Amazon.com, Inc. ou suas afiliadas. Todos os direitos reservados.
-SPDX-License-Identifier: MIT-0
+<!-- Copyright Amazon.com, Inc. ou suas afiliadas. Todos os direitos reservados.
+SPDX-License-Identifier: MIT-0 -->
 
 
-
-
-<!-- 
-políticas que adicionei: AllowSageMakerUpdateDomain, 
-AllowSageMakerGetMlflow -> permite as ações necessárias do MLflow no SageMaker. -->
 

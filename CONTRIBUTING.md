@@ -1,64 +1,56 @@
-# Contributing Guidelines
+# Diretrizes de Contribuição
 
-Thank you for your interest in contributing to our project. Whether it's a bug report, new feature, correction, or additional
-documentation, we greatly value feedback and contributions from our community.
+Obrigado pelo seu interesse em contribuir para o nosso projeto. Se for um relatório de bug, nova funcionalidade, correção ou documentação adicional, valorizamos muito o feedback e as contribuições da nossa comunidade.
 
-Please read through this document before submitting any issues or pull requests to ensure we have all the necessary
-information to effectively respond to your bug report or contribution.
+Por favor, leia este documento antes de enviar quaisquer problemas ou solicitações de pull para garantir que temos todas as informações necessárias para responder de forma eficaz ao seu relatório de bug ou contribuição.
 
+## Relatando Bugs/Solicitações de Funcionalidade
 
-## Reporting Bugs/Feature Requests
+Convidamos você a usar o rastreador de problemas do GitHub para relatar bugs ou sugerir funcionalidades.
 
-We welcome you to use the GitHub issue tracker to report bugs or suggest features.
+Ao abrir um problema, verifique os [problemas abertos existentes](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production/issues) ou [recentemente fechados](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aclosed%20) para se certificar de que alguém não relatou o problema anteriormente. Por favor, tente incluir o máximo de informações possível. Detalhes como estes são extremamente úteis:
 
-When filing an issue, please check [existing open](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production/issues), or [recently closed](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aclosed%20), issues to make sure somebody else hasn't already
-reported the issue. Please try to include as much information as you can. Details like these are incredibly useful:
+* Um caso de teste reproduzível ou uma série de passos
+* A versão do nosso código em uso
+* Quaisquer modificações que você tenha feito relevantes ao bug
+* Qualquer coisa incomum sobre seu ambiente ou implantação
 
-* A reproducible test case or series of steps
-* The version of our code being used
-* Any modifications you've made relevant to the bug
-* Anything unusual about your environment or deployment
+## Contribuindo via Pull Requests
 
+Contribuições via pull requests são muito apreciadas. Antes de nos enviar um pull request, certifique-se de que:
 
-## Contributing via Pull Requests
-Contributions via pull requests are much appreciated. Before sending us a pull request, please ensure that:
+1. Você está trabalhando na versão mais recente do código na branch *master*.
+2. Você verifica pull requests existentes abertos e recentemente mesclados para ter certeza de que alguém não resolveu o problema anteriormente.
+3. Você abre um problema para discutir qualquer trabalho significativo - não gostaríamos que seu tempo fosse desperdiçado.
 
-1. You are working against the latest source on the *master* branch.
-2. You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
-3. You open an issue to discuss any significant work - we would hate for your time to be wasted.
+Para nos enviar um pull request, por favor:
 
-To send us a pull request, please:
+1. Faça um fork do repositório.
+2. Modifique o código-fonte; concentre-se na alteração específica que você está contribuindo. Se você também reformata todo o código, será difícil para nós focar na sua alteração.
+3. Certifique-se de que os testes locais passem.
+4. Faça commit no seu fork usando mensagens de commit claras.
+5. Envie-nos um pull request, respondendo a quaisquer perguntas padrão na interface do pull request.
+6. Preste atenção a quaisquer falhas automáticas de CI relatadas no pull request e mantenha-se envolvido na conversa.
 
-1. Fork the repository.
-2. Modify the source; please focus on the specific change you are contributing. If you also reformat all the code, it will be hard for us to focus on your change.
-3. Ensure local tests pass.
-4. Commit to your fork using clear commit messages.
-5. Send us a pull request, answering any default questions in the pull request interface.
-6. Pay attention to any automated CI failures reported in the pull request, and stay involved in the conversation.
+O GitHub fornece documentação adicional sobre [fazer um fork de um repositório](https://help.github.com/articles/fork-a-repo/) e [criar um pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-GitHub provides additional document on [forking a repository](https://help.github.com/articles/fork-a-repo/) and
-[creating a pull request](https://help.github.com/articles/creating-a-pull-request/).
+## Encontrando Contribuições para Trabalhar
 
+Verificar os problemas existentes é uma ótima maneira de encontrar algo para contribuir. Como nossos projetos, por padrão, usam os rótulos de problemas padrão do GitHub (enhancement/bug/duplicate/help wanted/invalid/question/wontfix), olhar para quaisquer problemas de ['help wanted'](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production/labels/help%20wanted) é um ótimo lugar para começar.
 
-## Finding contributions to work on
-Looking at the existing issues is a great way to find something to contribute on. As our projects, by default, use the default GitHub issue labels (enhancement/bug/duplicate/help wanted/invalid/question/wontfix), looking at any ['help wanted'](https://github.com/aws-samples/amazon-sagemaker-from-idea-to-production/labels/help%20wanted) issues is a great place to start.
+## Código de Conduta
 
+Este projeto adotou o [Código de Conduta de Código Aberto da Amazon](https://aws.github.io/code-of-conduct). Para mais informações, consulte o [FAQ do Código de Conduta](https://aws.github.io/code-of-conduct-faq) ou entre em contato pelo e-mail opensource-codeofconduct@amazon.com com quaisquer perguntas ou comentários adicionais.
 
-## Code of Conduct
-This project has adopted the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct).
-For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq) or contact
-opensource-codeofconduct@amazon.com with any additional questions or comments.
+## Notificações de Problemas de Segurança
 
+Se você descobrir um potencial problema de segurança neste projeto, pedimos que notifique a Segurança da AWS/Amazon através da nossa [página de relatório de vulnerabilidades](http://aws.amazon.com/security/vulnerability-reporting/). Por favor, **não** crie um problema público no GitHub.
 
-## Security issue notifications
-If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security via our [vulnerability reporting page](http://aws.amazon.com/security/vulnerability-reporting/). Please do **not** create a public github issue.
+## Licenciamento
 
+Consulte o arquivo [LICENSE](./LICENSE) para o licenciamento do nosso projeto. Pediremos que você confirme o licenciamento da sua contribuição.
 
-## Licensing
+Podemos pedir que você assine um [Acordo de Licença de Contribuidor (CLA)](http://en.wikipedia.org/wiki/Contributor_License_Agreement) para alterações maiores.
 
-See the [LICENSE](./LICENSE) file for our project's licensing. We will ask you to confirm the licensing of your contribution.
-
-We may ask you to sign a [Contributor License Agreement (CLA)](http://en.wikipedia.org/wiki/Contributor_License_Agreement) for larger changes.
-
-Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. ou suas afiliadas. Todos os Direitos Reservados.  
 SPDX-License-Identifier: MIT-0

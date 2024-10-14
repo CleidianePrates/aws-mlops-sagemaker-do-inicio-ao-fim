@@ -87,8 +87,25 @@ def register(
         }
 
     except Exception as e:
-        print(f"Exception in processing script: {e}")
+        print(f"Exceção no script de processamento: {e}")
         raise e
     finally:
         mlflow.end_run()
 
+
+# Este código é usado para registrar um modelo treinado como um pacote de modelo no Amazon SageMaker. 
+# Aqui está o que a função `register` faz:
+
+# 1. Configura o MLflow, definindo o URI de rastreamento e o experimento.
+# 2. Salva o resultado da avaliação do modelo em um arquivo JSON local e registra-o como um artefato no MLflow.
+# 3. Obtém o estimador do treinamento do modelo anexando-o ao nome do trabalho de treinamento fornecido.
+# 4. Cria um objeto `ModelMetrics` a partir dos caminhos S3 fornecidos para as estatísticas do modelo, restrições do modelo, 
+#     estatísticas dos dados do modelo e restrições dos dados do modelo.
+# 5. Registra o modelo treinado como um pacote de modelo no Amazon SageMaker, fornecendo detalhes como tipos de conteúdo, 
+#     tipos de resposta, instâncias de inferência e transformação, grupo do pacote de modelo, status de aprovação e métricas do modelo.
+# 6. Registra os parâmetros relevantes no MLflow, incluindo o ARN do pacote de modelo, os URIs das estatísticas e restrições do modelo 
+#     e dos dados.
+# 7. Retorna um dicionário contendo o ARN do pacote de modelo, o nome do grupo do pacote de modelo e o ID da execução do pipeline (se aplicável).
+
+# O código usa as bibliotecas `json`, `sagemaker`, `boto3`, `mlflow`, `sagemaker.estimator` e `sagemaker.model_metrics` para interagir 
+# com o Amazon SageMaker e o MLflow.

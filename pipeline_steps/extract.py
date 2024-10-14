@@ -18,7 +18,7 @@ def extract_features(
     sagemaker_client = boto_session.client(service_name="sagemaker", region_name=region)
     featurestore_runtime = boto_session.client(service_name="sagemaker-featurestore-runtime",region_name=region)
     
-    # Create FeatureStore session object
+    # Criar objeto de sessão FeatureStore
     feature_store_session = Session(
         boto_session=boto_session,
         sagemaker_client=sagemaker_client,
@@ -28,7 +28,7 @@ def extract_features(
     feature_store = FeatureStore(sagemaker_session=feature_store_session)
     dataset_feature_group = FeatureGroup(feature_group_name)
     
-    # Create dataset builder to retrieve the most recent version of each record
+    # Criar construtor de dataset para recuperar a versão mais recente de cada registro
     builder = feature_store.create_dataset(
         base=dataset_feature_group,
         # included_feature_names=inlcuded_feature_names,
@@ -63,19 +63,19 @@ def prepare_datasets(
             query_output_s3_path,
         ).drop(feature_store_col, axis=1)
         
-        print(f"Extracted {len(df_model_data)} rows from the feature group {feature_group_name}")
+        print(f"Extraídas {len(df_model_data)} linhas do grupo de recursos {feature_group_name}")
 
-        # log dataset
+        # registrar dataset
         input_dataset = mlflow.data.from_pandas(df_model_data, source=output_s3_prefix)
         mlflow.log_input(input_dataset, context="featureset")
     
-         # Shuffle and splitting dataset
+         # Embaralhar e dividir o dataset
         train_data, validation_data, test_data = np.split(
             df_model_data.sample(frac=1, random_state=1729),
             [int(0.7 * len(df_model_data)), int(0.9 * len(df_model_data))],
         )
     
-        print(f"Data split > train:{train_data.shape} | validation:{validation_data.shape} | test:{test_data.shape}")
+        print(f"Divisão de dados > treino:{train_data.shape} | validação:{validation_data.shape} | teste:{test_data.shape}")
 
         mlflow.log_params(
             {
@@ -86,25 +86,25 @@ def prepare_datasets(
             }
         )
 
-        # Set S3 upload paths
+        # Definir caminhos de upload S3
         train_data_output_s3_path = f"{output_s3_prefix}/train/train.csv"
         validation_data_output_s3_path = f"{output_s3_prefix}/validation/validation.csv"
         test_x_data_output_s3_path = f"{output_s3_prefix}/test/test_x.csv"
         test_y_data_output_s3_path = f"{output_s3_prefix}/test/test_y.csv"
         baseline_data_output_s3_path = f"{output_s3_prefix}/baseline/baseline.csv"
         
-        # Upload datasets to S3
+        # Upload dos datasets para o S3
         train_data.to_csv(train_data_output_s3_path, index=False, header=False)
         validation_data.to_csv(validation_data_output_s3_path, index=False, header=False)
         test_data[target_col].to_csv(test_y_data_output_s3_path, index=False, header=False)
         test_data.drop([target_col], axis=1).to_csv(test_x_data_output_s3_path, index=False, header=False)
         
-        # Save the baseline dataset for model monitoring
+        # Salvar o dataset de linha de base para monitoramento de modelo
         df_model_data.drop([target_col], axis=1).to_csv(baseline_data_output_s3_path, index=False, header=False)
         
         s3 = boto3.client("s3")
       
-        print(f"Datasets are uploaded to S3: {output_s3_prefix}. Exiting.")
+        print(f"Datasets foram enviados para o S3: {output_s3_prefix}. Saindo.")
         
         return {
            "train_data":train_data_output_s3_path,
@@ -116,8 +116,22 @@ def prepare_datasets(
             "pipeline_run_id":pipeline_run.info.run_id if pipeline_run else ''
         }
     except Exception as e:
-        print(f"Exception in processing script: {e}")
+        print(f"Exceção no script de processamento: {e}")
         raise e
     finally:
         mlflow.end_run()
-    
+
+
+
+
+# Este código é usado para preparar os datasets de treino, validação e teste a partir de um grupo de recursos (Feature Group) 
+# do Amazon SageMaker Feature Store. Aqui está o que cada função faz:
+
+# - `extract_features`: Esta função extrai os dados do grupo de recursos especificado e retorna um DataFrame Pandas com os dados.
+# - `prepare_datasets`: Esta é a função principal que prepara os datasets. Ela chama a função `extract_features` para obter os dados 
+# do grupo de recursos, registra o dataset no MLflow, divide os dados em treino, validação e teste, e envia os datasets para o Amazon S3. 
+# Ela também registra as métricas e parâmetros no MLflow. O resultado da preparação dos datasets, incluindo os caminhos dos datasets no S3,
+# o nome do experimento e o ID da execução do pipeline, é retornado como um dicionário.
+
+# O código usa as bibliotecas `boto3`, `pandas`, `numpy`, `mlflow`, `sagemaker.session`, `sagemaker.feature_store.feature_store` 
+# e `sagemaker.feature_store.feature_group` para interagir com o Amazon SageMaker Feature Store, o Amazon S3 e o MLflow.
