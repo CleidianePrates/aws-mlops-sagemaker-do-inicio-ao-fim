@@ -1,8 +1,7 @@
 additional-topics
 CONTRIBUTING.md
 LICENSE
-additional-topics
-cnf-templates
+cfn-templates
 design
 CODE_OF_CONDUCT.md
 Makefile

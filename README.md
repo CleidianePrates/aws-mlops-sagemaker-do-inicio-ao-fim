@@ -71,7 +71,6 @@ Abra o [console AWS CloudFormation](https://us-east-1.console.aws.amazon.com/clo
 - Deixe todos os padrões neste painel, clique em **Next**
 - Selecione **I acknowledge that AWS CloudFormation might create IAM resources**, clique em **Submit**
 
-![](img/cfn-ack.png)
 
 No painel **CloudFormation**, escolha **Stacks**. Leva cerca de 15 minutos para que a pilha seja criada. Quando a pilha é criada, o status da pilha muda de `CREATE_IN_PROGRESS` para `CREATE_COMPLETE`.
 
@@ -87,11 +86,11 @@ Aqui estão as instruções passo a passo, se preferir:
    ![](img/aws-console-sagemaker.png)
 
 2. À esquerda, na seção `Applications and IDEs`, selecione Studio
-3. Na caixa `Get started`, certifique-se de que studio-user-xxxxxxxx está selecionado e selecione `Open studio`. Agora a interface do SageMaker Studio abre em uma nova aba do navegador e você é redirecionado para essa janela.
+3. Na caixa `Conceitos básicos`, certifique-se de que studio-user-xxxxxxxx está selecionado e selecione `Abrir o Studio`. Agora a interface do SageMaker Studio abre em uma nova aba do navegador e você é redirecionado para essa janela.
 
    ![](img/launch-studio.png)
 
-4. Opcionalmente, faça o tour rápido da interface do SageMaker Studio selecionando o botão `Take quick tour` ou selecione `Skip Tour for now`
+4. Opcionalmente, faça o tour rápido da interface do SageMaker Studio selecionando o botão `Take the tour` ou selecione `Skip Tour for now`
 5. Aceite ou recuse as preferências de cookies com base em sua preferência
 
 ### Abrir espaço JupyterLab
