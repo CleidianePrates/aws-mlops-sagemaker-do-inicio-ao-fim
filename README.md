@@ -119,6 +119,7 @@ Você só precisa clonar os notebooks em seu espaço se usar seu próprio domín
 ```sh
 git clone https://github.com/CleidianePrates/aws-mlops-sagemaker-do-inicio-ao-fim.git
 ```
+![](img/clone-repos.png)
 
 Isso clonará o repositório no sistema de arquivos local do JupyterLab.
 
