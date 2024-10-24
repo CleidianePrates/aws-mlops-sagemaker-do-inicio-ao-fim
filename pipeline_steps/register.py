@@ -25,21 +25,55 @@ def register(
     pipeline_run_id=None,
     run_id=None,
 ):
+    """
+    Registra um modelo treinado no SageMaker Model Registry e registra os metadados no MLflow.
+
+    Args:
+        training_job_name (str): Nome do job de treinamento do SageMaker.
+        model_package_group_name (str): Nome do grupo de pacotes de modelo no SageMaker Model Registry.
+        model_approval_status (str): Status de aprovação inicial do modelo ('Approved', 'PendingManualApproval', etc.).
+        evaluation_result (dict): Resultados da avaliação do modelo.
+        output_s3_prefix (str): Prefixo S3 para armazenar artefatos.
+        tracking_server_arn (str): ARN do servidor de rastreamento MLflow.
+        model_statistics_s3_path (str, opcional): Caminho S3 para estatísticas do modelo.
+        model_constraints_s3_path (str, opcional): Caminho S3 para restrições do modelo.
+        model_data_statistics_s3_path (str, opcional): Caminho S3 para estatísticas dos dados do modelo.
+        model_data_constraints_s3_path (str, opcional): Caminho S3 para restrições dos dados do modelo.
+        experiment_name (str, opcional): Nome do experimento MLflow.
+        pipeline_run_id (str, opcional): ID da execução do pipeline MLflow.
+        run_id (str, opcional): ID da execução MLflow.
+
+    Returns:
+        dict: Informações sobre o pacote de modelo registrado.
+    """
     try:
+        # Gera um sufixo único baseado no tempo atual
         suffix = strftime('%d-%H-%M-%S', gmtime())
+        
+        # Configura o servidor de rastreamento MLflow
         mlflow.set_tracking_uri(tracking_server_arn)
+        
+        # Configura ou cria um experimento MLflow
         experiment = mlflow.set_experiment(experiment_name=experiment_name if experiment_name else f"{register.__name__ }-{suffix}")
+        
+        # Inicia uma execução de pipeline MLflow, se fornecido um ID
         pipeline_run = mlflow.start_run(run_id=pipeline_run_id) if pipeline_run_id else None            
+        
+        # Inicia uma execução MLflow para este registro
         run = mlflow.start_run(run_id=run_id) if run_id else mlflow.start_run(run_name=f"register-{suffix}", nested=True)
 
+        # Salva os resultados da avaliação em um arquivo JSON
         evaluation_result_path = f"evaluation.json"
         with open(evaluation_result_path, "w") as f:
             f.write(json.dumps(evaluation_result))
             
+        # Registra o arquivo de avaliação como um artefato no MLflow
         mlflow.log_artifact(local_path=evaluation_result_path)
             
+        # Anexa ao estimador do job de treinamento existente
         estimator = Estimator.attach(training_job_name)
         
+        # Configura as métricas do modelo
         model_metrics = ModelMetrics(
             model_statistics=MetricsSource(
                 s3_uri=model_statistics_s3_path,
@@ -59,6 +93,7 @@ def register(
             ) if model_data_constraints_s3_path else None,
         )
     
+        # Registra o modelo no SageMaker Model Registry
         model_package = estimator.register(
             content_types=["text/csv"],
             response_types=["text/csv"],
@@ -72,40 +107,25 @@ def register(
             task="CLASSIFICATION", 
         )
 
+        # Registra os parâmetros do modelo no MLflow
         mlflow.log_params({
-            "model_package_arn":model_package.model_package_arn,
-            "model_statistics_uri":model_statistics_s3_path if model_statistics_s3_path else '',
-            "model_constraints_uri":model_constraints_s3_path if model_constraints_s3_path else '',
-            "data_statistics_uri":model_data_statistics_s3_path if model_data_statistics_s3_path else '',
-            "data_constraints_uri":model_data_constraints_s3_path if model_data_constraints_s3_path else '',
+            "model_package_arn": model_package.model_package_arn,
+            "model_statistics_uri": model_statistics_s3_path if model_statistics_s3_path else '',
+            "model_constraints_uri": model_constraints_s3_path if model_constraints_s3_path else '',
+            "data_statistics_uri": model_data_statistics_s3_path if model_data_statistics_s3_path else '',
+            "data_constraints_uri": model_data_constraints_s3_path if model_data_constraints_s3_path else '',
         })
 
+        # Retorna informações sobre o pacote de modelo registrado
         return {
-            "model_package_arn":model_package.model_package_arn,
-            "model_package_group_name":model_package_group_name,
-            "pipeline_run_id":pipeline_run.info.run_id if pipeline_run else ''
+            "model_package_arn": model_package.model_package_arn,
+            "model_package_group_name": model_package_group_name,
+            "pipeline_run_id": pipeline_run.info.run_id if pipeline_run else ''
         }
 
     except Exception as e:
         print(f"Exceção no script de processamento: {e}")
         raise e
     finally:
+        # Finaliza a execução MLflow
         mlflow.end_run()
-
-
-# Este código é usado para registrar um modelo treinado como um pacote de modelo no Amazon SageMaker. 
-# Aqui está o que a função `register` faz:
-
-# 1. Configura o MLflow, definindo o URI de rastreamento e o experimento.
-# 2. Salva o resultado da avaliação do modelo em um arquivo JSON local e registra-o como um artefato no MLflow.
-# 3. Obtém o estimador do treinamento do modelo anexando-o ao nome do trabalho de treinamento fornecido.
-# 4. Cria um objeto `ModelMetrics` a partir dos caminhos S3 fornecidos para as estatísticas do modelo, restrições do modelo, 
-#     estatísticas dos dados do modelo e restrições dos dados do modelo.
-# 5. Registra o modelo treinado como um pacote de modelo no Amazon SageMaker, fornecendo detalhes como tipos de conteúdo, 
-#     tipos de resposta, instâncias de inferência e transformação, grupo do pacote de modelo, status de aprovação e métricas do modelo.
-# 6. Registra os parâmetros relevantes no MLflow, incluindo o ARN do pacote de modelo, os URIs das estatísticas e restrições do modelo 
-#     e dos dados.
-# 7. Retorna um dicionário contendo o ARN do pacote de modelo, o nome do grupo do pacote de modelo e o ID da execução do pipeline (se aplicável).
-
-# O código usa as bibliotecas `json`, `sagemaker`, `boto3`, `mlflow`, `sagemaker.estimator` e `sagemaker.model_metrics` para interagir 
-# com o Amazon SageMaker e o MLflow.
